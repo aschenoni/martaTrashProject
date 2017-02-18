@@ -1,0 +1,45 @@
+{
+  "name": "gulp-angular-express-seed",
+  "version": "1.0.0",
+  "description": "A seed for building an Angular.js app that sits on top of Express.js and use Gulp for build automation",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GordyD/gulp-angular-express-seed.git"
+  },
+  "keywords": [
+    "Angular.js",
+    "Express.js",
+    "Gulp.js.",
+    "Node.js"
+  ],
+  "author": "Gordon Dent",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/GordyD/gulp-angular-express-seed/issues"
+  },
+  "homepage": "https://github.com/GordyD/gulp-angular-express-seed",
+  "dependencies": {
+    "errorhandler": "^1.2.0",
+    "express": "^4.9.0",
+    "jade": "^1.6.0"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.4.0",
+    "gulp": "^3.8.8",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.4.0",
+    "gulp-jshint": "^1.8.4",
+    "gulp-ng-annotate": "^0.3.2",
+    "gulp-rev": "^1.1.0",
+    "gulp-rev-replace": "^0.3.1",
+    "gulp-sass": "^0.7.3",
+    "gulp-sourcemaps": "^1.1.5",
+    "gulp-uglify": "^1.0.1",
+    "gulp-watch": "^1.0.5"
+  },
+  "engines": {
+    "node": ">=0.10.31",
+    "npm": ">=1.4.46"
+  }
+}
