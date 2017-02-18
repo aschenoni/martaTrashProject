@@ -1,11 +1,19 @@
 'use strict';
 
+var express = require('express');
+var path = require('path');
+var errorHandler = require('errorhandler');
+var nconf = require('nconf');
+nconf.argv()
+  .env()
+  .file({
+    file: '../config.json'
+  });
+var db = require('./server_modules/db.js');
+
 var port = process.env.PORT || 3000,
 env = process.env.NODE_ENV || 'development',
-express = require('express'),
 app = express(),
-path = require('path'),
-errorHandler = require('errorhandler'),
 rootPath = path.normalize(__dirname);
 
 // Expose app
@@ -29,11 +37,10 @@ if (env === 'development') {
   });
 
   app.use(express.static(path.join(rootPath, '.tmp')));
-  app.use(express.static(path.join(rootPath, 'app')));
-  app.set('views', path.join(rootPath, 'app', 'views'));
+  app.use(express.static(path.join(rootPath, '../app_client')));
+  app.set('views', path.join(rootPath, '../app_client', 'views'));
 } else {
   app.use(express.static(path.join(rootPath, 'build')));
-  app.set('views', path.join(rootPath, 'build', 'views'));
 }
 
 /**
