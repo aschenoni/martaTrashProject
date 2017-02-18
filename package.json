@@ -1,11 +1,11 @@
 {
-  "name": "gulp-angular-express-seed",
+  "name": "martathon",
   "version": "1.0.0",
   "description": "A seed for building an Angular.js app that sits on top of Express.js and use Gulp for build automation",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GordyD/gulp-angular-express-seed.git"
+    "url": ""
   },
   "keywords": [
     "Angular.js",
@@ -13,12 +13,12 @@
     "Gulp.js.",
     "Node.js"
   ],
-  "author": "Gordon Dent",
+  "author": "Austin Schenoni & Kris Gjika",
   "license": "GPL",
   "bugs": {
-    "url": "https://github.com/GordyD/gulp-angular-express-seed/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/GordyD/gulp-angular-express-seed",
+  "homepage": "",
   "dependencies": {
     "errorhandler": "^1.2.0",
     "express": "^4.9.0",
