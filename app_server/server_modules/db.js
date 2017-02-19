@@ -2,7 +2,6 @@ var mysql = require('mysql');
 var nconf = require('nconf');
 nconf.file({file: 'config.json'});
 
-console.log(nconf.get('dbHost'))
 var pool = mysql.createPool({
 	connectionLimit: 10,
 	connectTimeout  : 60 * 60 * 1000,

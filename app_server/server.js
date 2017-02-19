@@ -4,6 +4,13 @@ var express = require('express');
 var path = require('path');
 var errorHandler = require('errorhandler');
 var nconf = require('nconf');
+
+/**
+* Routes
+*/
+var locationRouter = require('./routes/location.js');
+var smsRouter = require('./routes/sms.js');
+
 nconf.argv()
   .env()
   .file({
@@ -11,7 +18,7 @@ nconf.argv()
   });
 var db = require('./server_modules/db.js');
 
-var port = process.env.PORT || 3000,
+var port = process.env.PORT || nconf.get('serverPort') || 3000,
 env = process.env.NODE_ENV || 'development',
 app = express(),
 rootPath = path.normalize(__dirname);
@@ -42,6 +49,9 @@ if (env === 'development') {
 } else {
   app.use(express.static(path.join(rootPath, 'build')));
 }
+
+app.use('/location', locationRouter);
+app.use('/delivery-receipt-webhook', smsRouter);
 
 /**
  * Set default view engine to jade (when using .jade files we do not need to
