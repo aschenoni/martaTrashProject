@@ -18,6 +18,7 @@ function handleWebhook(params, res) {
             console.log("Fail:", params['status'], ": ", params['err-code']);
         } else {
             console.log("Success");
+            console.log(params);
           /*
             * The following parameters in the delivery receipt should match the ones
             * in your request:
