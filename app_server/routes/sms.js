@@ -2,10 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/delivery-receipt-webhook', function(req, res) {
+    console.log(req.query);
     handleWebhook(req.query, res);
 });
 
 router.post('/delivery-receipt-webhook', function(req, res) {
+    console.log(req.body);
     handleWebhook(req.body, res);
 });
 
