@@ -18,7 +18,7 @@ nconf.argv()
   });
 var db = require('./server_modules/db.js');
 
-var port = process.env.PORT || nconf.get('serverPort') || 3000,
+var port = process.env.PORT || nconf.get('serverPort') || 8080,
 env = process.env.NODE_ENV || 'development',
 app = express(),
 rootPath = path.normalize(__dirname);
