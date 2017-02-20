@@ -4,13 +4,14 @@ var express = require('express');
 var path = require('path');
 var errorHandler = require('errorhandler');
 var nconf = require('nconf');
-
+var morgan = require('morgan');
 /**
 * Routes
 */
 var locationRouter = require('./routes/location.js');
 var smsRouter = require('./routes/sms.js');
 
+morgan('tiny');
 nconf.argv()
   .env()
   .file({
