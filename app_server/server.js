@@ -11,7 +11,6 @@ var morgan = require('morgan');
 var locationRouter = require('./routes/location.js');
 var smsRouter = require('./routes/sms.js');
 
-morgan('tiny');
 nconf.argv()
   .env()
   .file({
@@ -30,6 +29,7 @@ exports = module.exports = app;
 /***************
  * Web App 
  ***************/
+app.use(morgan('tiny'));
 
 if (env === 'development') {
   app.use(require('connect-livereload')());
@@ -83,7 +83,7 @@ app.use(errorHandler());
  ***************/
 
 function index(req, res) {
-  res.render('index', { isDevelopment: (env === 'development') });
+  res.send('../app_client/index.html');
 }
 
 function partials(req, res) {
