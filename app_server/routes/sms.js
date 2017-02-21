@@ -28,7 +28,7 @@ function handleWebhook(params, res) {
 
         function getTrashcanFromText(text){
             var idRegex = /([^\d]|^)(\d{4})([^\d]|$)/g;
-            idRegex.execute(text);
+            idRegex.exec(text);
             console.log("regex match " + text[2]);
             return text[2];
         }
