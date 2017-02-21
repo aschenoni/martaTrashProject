@@ -23,7 +23,7 @@ function handleWebhook(params, res) {
             message_id: params.messageId,
             text: params.text,
             trashcan_id: getTrashcanFromText(params.text),
-            timestamp: params.message-timestamp
+            timestamp: params["message-timestamp"]
         };
 
         function getTrashcanFromText(text){
