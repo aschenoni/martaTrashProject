@@ -33,7 +33,7 @@ function handleWebhook(params, res) {
             return text[2];
         }
 
-        db.query('INSERT INTO trash_project.Report SET ?', [params], function(err, result){
+        db.query('INSERT INTO trash_project.Report SET ?', [querySet], function(err, result){
             err ? console.log(err) : console.log(result);
         })
       /*
