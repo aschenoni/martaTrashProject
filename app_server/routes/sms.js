@@ -54,7 +54,7 @@ function handleWebhook(params, res) {
                             'at ' + location + ' - ' + locationDescript)
                         .subject('Trashcan full id:' + trashcanId)
                         .to('marta.trash.report@aeonsoftworks.com')
-                        .from('test@otisapp.com')
+                        .from('marta.trash.report@aeonsoftworks.com')
                         .send(function(err, result){
                             console.log(err || result);
                         });

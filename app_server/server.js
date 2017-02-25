@@ -10,6 +10,7 @@ var morgan = require('morgan');
 */
 var locationRouter = require('./routes/location.js');
 var smsRouter = require('./routes/sms.js');
+var sensorRouter = require('./routes/arduino.js');
 
 nconf.argv()
   .env()
@@ -53,6 +54,7 @@ if (env === 'development') {
 
 app.use('/location', locationRouter);
 app.use('/delivery-receipt-webhook', smsRouter);
+app.use('/sensor', sensorRouter);
 
 /**
  * Set default view engine to jade (when using .jade files we do not need to
