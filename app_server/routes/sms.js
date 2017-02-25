@@ -1,3 +1,4 @@
+var otisMail = require('../server_modules/otis-mailer.js');
 var express = require('express');
 var router = express.Router();
 var db = require('../server_modules/db.js');
@@ -36,6 +37,19 @@ function handleWebhook(params, res) {
         db.query('INSERT INTO trash_project.Report SET ?', [querySet], function(err, result){
             err ? console.log(err) : console.log(result);
         })
+
+        otisMail.hostname('email-smtp.us-east-1.amazonaws.com', true)
+            .credentials("AKIAJFE5ZQ36LTPKYUWA", "AjGSUyq7VvMYh6vQZHfzFzp5QTWubMHZgoFUK4tJGsSN")
+            .connect()
+            .email()
+            .text('There is a report of a full trashcan\n Trashcan ID: ' + getTrashcanFromText(text));
+            .subject('subject line')
+            .to('marta.trash.report@aeonsoftworks.com')
+            .from('test@otisapp.com')
+            .send(function(err, result){
+                console.log(err || result);
+            });
+
       /*
         * The following parameters in the delivery receipt should match the ones
         * in your request:
