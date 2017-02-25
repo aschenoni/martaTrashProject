@@ -1,5 +1,5 @@
 var mailer = require('emailjs');
-var otisEmail = require('./email.js');
+var otisEmail = require('./otis-email.js');
 otisMail = {
 	user: '',
 	password: '',
