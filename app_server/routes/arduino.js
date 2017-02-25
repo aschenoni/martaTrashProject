@@ -26,16 +26,19 @@ router.get('/:id', function(req,res){
                         .connect()
                         .email()
                         .text('A sensor reading indicates a full trashcan\n Trashcan ID: ' 
-                            + getTrashcanFromText(params.text) + '\n' +
+                            + trashcanId + '\n' +
                             'at ' + location + ' - ' + locationDescript)
                         .subject('Sensor Indiciation: Trashcan full id:' + trashcanId)
                         .to('marta.trash.report@aeonsoftworks.com')
                         .from('marta.trash.report@aeonsoftworks.com')
                         .send(function(err, result){
                             console.log(err || result);
+                            res.send(200);
                         });
                 })
         })
+
+
 })
 
 
