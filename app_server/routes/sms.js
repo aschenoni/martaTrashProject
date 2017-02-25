@@ -41,9 +41,9 @@ function handleWebhook(params, res) {
                 'LEFT OUTER JOIN trash_project.Traschan t ON ' +
                 't.id = r.trashcan_id LEFT OUTER JOIN trash_project.Location l ' +
                 'ON l.id = t.location_id WHERE r.id = ?', [result.insertId], function(err, result){
-                    var trashcanId = result.trashcan_id;
-                    var location = result.shortname;
-                    var locationDescript = result.location_description;
+                    var trashcanId = result[0].trashcan_id;
+                    var location = result[0].shortname;
+                    var locationDescript = result[0].location_description;
 
                     otisMail.hostname('email-smtp.us-east-1.amazonaws.com', true)
                         .credentials("AKIAJFE5ZQ36LTPKYUWA", "AjGSUyq7VvMYh6vQZHfzFzp5QTWubMHZgoFUK4tJGsSN")
