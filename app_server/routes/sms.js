@@ -36,19 +36,31 @@ function handleWebhook(params, res) {
 
         db.query('INSERT INTO trash_project.Report SET ?', [querySet], function(err, result){
             err ? console.log(err) : console.log(result);
+
+            db.query('SELECT * FROM trash_project.Report r ' + 
+                'LEFT OUTER JOIN trash_project.Traschan t ON ' +
+                't.id = r.trashcan_id LEFT OUTER JOIN trash_project.Location l ' +
+                'ON l.id = t.location_id WHERE r.id = ?', [result.insertId], function(err, result){
+                    var trashcanId = result.trashcan_id;
+                    var location = result.shortname;
+                    var locationDescript = result.location_description;
+
+                    otisMail.hostname('email-smtp.us-east-1.amazonaws.com', true)
+                        .credentials("AKIAJFE5ZQ36LTPKYUWA", "AjGSUyq7VvMYh6vQZHfzFzp5QTWubMHZgoFUK4tJGsSN")
+                        .connect()
+                        .email()
+                        .text('There is a report of a full trashcan\n Trashcan ID: ' 
+                            + getTrashcanFromText(params.text) + '\n' +
+                            'at ' + location + ' - ' + locationDescript)
+                        .subject('Trashcan full id:' + trashcanId)
+                        .to('marta.trash.report@aeonsoftworks.com')
+                        .from('test@otisapp.com')
+                        .send(function(err, result){
+                            console.log(err || result);
+                        });
+                })
         })
 
-        otisMail.hostname('email-smtp.us-east-1.amazonaws.com', true)
-            .credentials("AKIAJFE5ZQ36LTPKYUWA", "AjGSUyq7VvMYh6vQZHfzFzp5QTWubMHZgoFUK4tJGsSN")
-            .connect()
-            .email()
-            .text('There is a report of a full trashcan\n Trashcan ID: ' + getTrashcanFromText(params.text))
-            .subject('subject line')
-            .to('marta.trash.report@aeonsoftworks.com')
-            .from('test@otisapp.com')
-            .send(function(err, result){
-                console.log(err || result);
-            });
 
       /*
         * The following parameters in the delivery receipt should match the ones
