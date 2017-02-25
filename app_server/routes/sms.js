@@ -42,7 +42,7 @@ function handleWebhook(params, res) {
             .credentials("AKIAJFE5ZQ36LTPKYUWA", "AjGSUyq7VvMYh6vQZHfzFzp5QTWubMHZgoFUK4tJGsSN")
             .connect()
             .email()
-            .text('There is a report of a full trashcan\n Trashcan ID: ' + getTrashcanFromText(text));
+            .text('There is a report of a full trashcan\n Trashcan ID: ' + getTrashcanFromText(text))
             .subject('subject line')
             .to('marta.trash.report@aeonsoftworks.com')
             .from('test@otisapp.com')
