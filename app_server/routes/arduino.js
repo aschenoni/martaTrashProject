@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var otisMail = require('../server_modules/otis-mailer.js');
+var db = require('../server_modules/db.js');
 
 router.get('/:id', function(req,res){
 
