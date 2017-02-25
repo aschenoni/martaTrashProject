@@ -30,8 +30,11 @@ function handleWebhook(params, res) {
         function getTrashcanFromText(text){
             var idRegex = /([^\d]|^)(\d{4})([^\d]|$)/g;
             var match = idRegex.exec(text);
-            console.log("regex match " + match[2]);
-            return match[2];
+            if(match.length >= 2){
+             return match[2];   
+            } else {
+                return -1;
+            }
         }
 
         db.query('INSERT INTO trash_project.Report SET ?', [querySet], function(err, result){
